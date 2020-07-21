@@ -14,6 +14,7 @@ export default {
             url: '',
             username: '',
             password: '',
+            token: '',
             updateInterval: 60
         },
         fields: [
@@ -22,8 +23,18 @@ export default {
                 name: 'Server URL (cctray XML)',
                 help: 'Example: http://server.com/cctray.xml'
             },
-            { type: 'username' },
-            { type: 'password' }
+            {
+                type: 'username',
+                help: 'Use either username/password or token authentication'
+            },
+            {
+                type: 'password',
+                help: 'Use either username/password or token authentication'
+            },
+            {
+                type: 'token',
+                help: 'Create a personal access token at <a href="https://gocd-server.domain.com/go/access_tokens" target="_blank">https://gocd-server.domain.com/go/access_tokens</a>'
+            }
         ]
     }),
     getAll: (settings) => {
