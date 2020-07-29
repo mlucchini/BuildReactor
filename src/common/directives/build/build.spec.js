@@ -72,4 +72,60 @@ describe('build', () => {
 
     });
 
+    describe('buildVisible', () => {
+
+        it('do not show build when build green', () => {
+            scope.viewConfig = {
+                showWhenGreen: false
+            };
+            scope.build = {
+                isBroken: false,
+                isRunning: false
+            };
+            scope.$digest();
+
+            expect(scope.buildVisible).toBe(false);
+        });
+
+        it('show build when build red', () => {
+            scope.viewConfig = {
+                showWhenGreen: false
+            };
+            scope.build = {
+                isBroken: true,
+                isRunning: false
+            };
+            scope.$digest();
+
+            expect(scope.buildVisible).toBe(true);
+        });
+
+        it('show commits when build in progress', () => {
+            scope.viewConfig = {
+                showWhenGreen: false
+            };
+            scope.build = {
+                isBroken: false,
+                isRunning: true
+            };
+            scope.$digest();
+
+            expect(scope.buildVisible).toBe(true);
+        });
+
+        it('show commits when build waiting', () => {
+            scope.viewConfig = {
+                showWhenGreen: false
+            };
+            scope.build = {
+                isBroken: false,
+                isWaiting: true
+            };
+            scope.$digest();
+
+            expect(scope.buildVisible).toBe(true);
+        });
+
+    });
+
 });

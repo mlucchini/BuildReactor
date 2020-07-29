@@ -41,7 +41,13 @@ module.directive('build', ($interval) => ({
                     $scope.build.isRunning ||
                     $scope.build.isWaiting);
             }
+            $scope.buildVisible = true;
+            if ($scope.build && !config.showWhenGreen) {
+                $scope.buildVisible = Boolean(
+                    $scope.build.isBroken ||
+                    $scope.build.isRunning ||
+                    $scope.build.isWaiting);
+            }
         });
-
     }
 }));

@@ -1,4 +1,4 @@
-<div class="build" ng-class="{ 'broken': build.isBroken, 'disabled': build.isDisabled, 'building': build.isRunning, 'offline': build.error, 'color-blind': viewConfig.colorBlindMode }">
+<div class="build" ng-class="{ 'broken': build.isBroken, 'disabled': build.isDisabled, 'building': build.isRunning, 'offline': build.error, 'color-blind': viewConfig.colorBlindMode }" ng-show="buildVisible">
     <a ng-href="{{ build.webUrl }}" target="{{ build.webUrl ? '_blank' : '_self' }}" class="progress-bar" ng-class="{ 'active': build.isRunning, 'progress-bar-striped': build.isRunning || build.isWaiting }">
         <div class="build-content">
             <span class="labels pull-right">

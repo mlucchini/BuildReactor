@@ -11,6 +11,7 @@ describe('core/config/viewConfigUpdater', () => {
             singleGroupRows: false,
             showCommits: true,
             showCommitsWhenGreen: false,
+            showWhenGreen: true,
             theme: 'dark',
             colorBlindMode: true,
             notifications: {
@@ -55,6 +56,14 @@ describe('core/config/viewConfigUpdater', () => {
         });
 
         expect(config.showCommitsWhenGreen).toBe(false);
+    });
+
+    it('should add default showWhenGreen', () => {
+        const config = updater.update({
+            columns: 4
+        });
+
+        expect(config.showWhenGreen).toBe(true);
     });
 
     it('should add default theme', () => {

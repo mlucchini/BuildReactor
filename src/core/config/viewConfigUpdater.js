@@ -10,6 +10,8 @@ export default {
         config.showCommitsWhenGreen =
             (typeof config.showCommitsWhenGreen === 'boolean') ?
             config.showCommitsWhenGreen : false;
+        config.showWhenGreen = (typeof config.showWhenGreen === 'boolean') ?
+            config.showWhenGreen : true;
         config.theme = config.theme || 'dark';
         config.colorBlindMode = config.colorBlindMode || true;
         config.notifications = config.notifications || {
