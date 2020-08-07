@@ -27,7 +27,8 @@ module.directive('buildGroup', () => ({
         };
 
         const calculateWidth = function(config, items) {
-            const width = 100 / Math.min(items.length, config.columns);
+            const visibleItems = items.filter(item => isBuildVisible(config, item));
+            const width = 100 / Math.min(visibleItems.length, config.columns);
             return `${width}%`;
         };
 
@@ -40,5 +41,12 @@ module.directive('buildGroup', () => ({
             return `${allColumnsWidth}%`;
         };
 
+        const isBuildVisible = function(config, item) {
+            return Boolean(
+                item && !config.showWhenGreen &&
+                (item.isBroken ||
+                item.isRunning ||
+                item.isWaiting));
+        };
     }
 }));
